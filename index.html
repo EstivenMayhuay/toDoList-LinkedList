@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Todo List with Single Linked List" />
+    <meta
+      name="keywords"
+      content="javascript, html5, modules, single linked list"
+    />
+    <meta name="author" content="Estiven Mayhuay" />
+    <title>To-do List</title>
+    <link rel="stylesheet" href="./css/estilos.css" />
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="content">
+      <h1>To-do List</h1>
+      <div class="content__countTask">
+        Total:
+        <span>0</span>
+      </div>
+      <div class="content__input">
+        <label>Ingresa tu tarea:</label>
+        <input type="text" id="task" placeholder="e.g comprar leche" />
+      </div>
+      <div class="content__btn">
+        <button class="btn btnPush">push</button>
+        <button class="btn btnUnshift">unshift</button>
+        <button class="btn btnPop">pop</button>
+        <button class="btn btnShift">shift</button>
+        <button class="btn btnSearch">search</button>
+      </div>
+    </header>
+
+    <section class="result"></section>
+
+    <script type="module" src="./scripts/app.js"></script>
+  </body>
+</html>
