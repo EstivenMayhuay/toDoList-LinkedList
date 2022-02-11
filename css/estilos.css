@@ -42,7 +42,7 @@ body {
   row-gap: 1em;
   width: calc(100% - 2em);
   height: auto;
-  padding: 1.3em 0.5em;
+  padding: 2em 0.5em;
   background: var(--white);
   box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, 0.5);
 }
@@ -55,8 +55,8 @@ body {
 
 .content__countTask {
   position: absolute;
-  right: 0.25em;
-  top: 0.25em;
+  right: 0.5em;
+  top: 0.5em;
   font-size: 0.9em;
   font-weight: 700;
   color: var(--black-grayish);
@@ -145,6 +145,60 @@ body {
 
 .btnSearch {
   background: var(--find);
+}
+
+.result {
+  display: block;
+  width: calc(100% - 2em);
+  height: auto;
+  background: transparent;
+}
+
+.result li {
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5em;
+  list-style: none;
+  background: var(--white);
+}
+
+.result span {
+  font-weight: 700;
+  color: var(--black-grayish);
+}
+
+.result li i {
+  position: absolute;
+  right: 0.5em;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+
+.result li .finish {
+  color: var(--white);
+}
+
+.result .finishTask {
+  background: var(--succes);
+  color: var(--white);
+  border-bottom: 0.5px solid var(--grayish);
+}
+
+.result .finishTask span {
+  color: var(--white);
+  text-decoration: line-through;
+}
+
+.result .activeTask {
+  background: var(--find);
+  color: var(--white);
+}
+
+.result .activeTask span {
+  color: var(--white);
 }
 
 @media screen and (min-width: 768px) {

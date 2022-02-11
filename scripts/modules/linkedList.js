@@ -25,7 +25,6 @@ class LinkedList {
       arr.push(current.value);
       current = current.next;
     }
-
     return arr;
   }
 
@@ -93,6 +92,20 @@ class LinkedList {
     current = this.head.next;
     this.head = current;
     this._length--;
+  }
+
+  // searching
+  search(value) {
+    let current = this.head;
+
+    while (current !== null) {
+      if (current.value.task.search(value) >= 0) {
+        return current.value;
+      }
+      current = current.next;
+    }
+
+    return false;
   }
 }
 

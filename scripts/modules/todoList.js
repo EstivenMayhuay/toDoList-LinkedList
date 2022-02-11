@@ -1,3 +1,6 @@
+import { Node, LinkedList } from "./linkedList.js";
+
+let listStore = new LinkedList();
 export default class TodoList {
   constructor(task = "", finish = false) {
     this.task = task;
@@ -32,13 +35,32 @@ export default class TodoList {
       }
 
       sectionTodo.innerHTML += `
-        <li class=${className}>
+        <li class=${className}> -  
           <span>${task}</span>
           ${tagI}
         </li>
       `;
     });
   }
+
+  // restoreTodo
+  /*
+  restoreTodo() {
+    if (localStorage.getItem("todoList") !== null) {
+      let linkedListStore = JSON.parse(localStorage.getItem("todoList"));
+      console.log(linkedListStore.head);
+      let current = linkedListStore.head;
+      let node = null;
+      while (current !== null) {
+        node = current.value;
+        listStore.push(node);
+        current = current.next;
+      }
+
+      console.log(listStore);
+      this.displayTodo(listStore);
+    }
+  }*/
 
   // addTodo
   addTodo(method, linkedList) {
@@ -53,6 +75,9 @@ export default class TodoList {
 
     if (method === "unshift") linkedList.unshift(new TodoList(textTask));
 
+    // save storage
+    localStorage.setItem("todoList", JSON.stringify(linkedList));
+
     this.showCountTodo(linkedList);
 
     this.displayTodo(linkedList);
@@ -64,12 +89,55 @@ export default class TodoList {
 
   // removeTodo
   removeTodo(method, linkedList) {
+    let sectionTodo = document.querySelector(".result");
+
+    if (sectionTodo.innerHTML === "") return alert("No hay tareas a eliminar");
+
     if (method === "pop") linkedList.pop();
 
     if (method === "shift") linkedList.shift();
 
+    // save storage
+    localStorage.setItem("todoList", JSON.stringify(linkedList));
+
     this.showCountTodo(linkedList);
 
     this.displayTodo(linkedList);
+  }
+
+  // finishTodo
+  stateTodo(event, state, linkedList) {
+    let li = event.target.parentNode;
+    let spanText = li.querySelector("span").textContent;
+    let objTask = linkedList.search(spanText);
+
+    if (state === "finish") objTask["finish"] = true;
+    else if (state === "noFinish") objTask["finish"] = false;
+
+    this.displayTodo(linkedList);
+  }
+
+  // searchTodo
+  searchTodo(linkedList) {
+    let sectionTodo = document.querySelector(".result");
+
+    if (sectionTodo.innerHTML === "") return alert("No hay tareas a buscar");
+
+    let dato = prompt("Ingrese una tarea buscar");
+
+    if (dato === "") return alert("Ingrese una palabra");
+
+    let { task } = linkedList.search(dato);
+    let spanTasks = Array.from(document.querySelectorAll(".result li span"));
+
+    spanTasks.forEach((spanTask) => {
+      if (task === spanTask.textContent) {
+        let li = spanTask.parentElement;
+        li.classList.add("activeTask");
+        setTimeout(() => {
+          li.classList.remove("activeTask");
+        }, 4000);
+      }
+    });
   }
 }
