@@ -43,25 +43,6 @@ export default class TodoList {
     });
   }
 
-  // restoreTodo
-  /*
-  restoreTodo() {
-    if (localStorage.getItem("todoList") !== null) {
-      let linkedListStore = JSON.parse(localStorage.getItem("todoList"));
-      console.log(linkedListStore.head);
-      let current = linkedListStore.head;
-      let node = null;
-      while (current !== null) {
-        node = current.value;
-        listStore.push(node);
-        current = current.next;
-      }
-
-      console.log(listStore);
-      this.displayTodo(listStore);
-    }
-  }*/
-
   // addTodo
   addTodo(method, linkedList) {
     let input = document.querySelector("#task");

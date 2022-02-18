@@ -7,8 +7,6 @@ let todo = new TodoList();
 document.addEventListener("DOMContentLoaded", () => {
   let d = document;
 
-  //todo.restoreTodo(lista);
-
   d.addEventListener("click", (e) => {
     if (e.target.matches(".btnPush")) todo.addTodo("push", lista);
     if (e.target.matches(".btnUnshift")) todo.addTodo("unshift", lista);
